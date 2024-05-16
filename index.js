@@ -25,7 +25,7 @@ const connection = new web3.Connection(web3.clusterApiUrl("devnet"));
 const mintAddress=new web3.PublicKey("E5LvWLceEjGW2AcSzjSWM3Uxu2euDYu8jvj1rQTpL9h7");
 
 // Create an instance of the `Bot` class and pass your bot token to it.
-const bot = new Bot("6245495911:AAF0lMhtIySXR4-kSxP_DJfYB3Pz84-acIQ"); // <-- put your bot token between the ""
+const bot = new Bot("7167522424:AAGy3DF0eqD3lQ7xA1THlR1-bK4dxwt5YLA"); // <-- put your bot token between the ""
 
 
 connection.onLogs(mintAddress,(data)=>{
