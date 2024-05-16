@@ -33,11 +33,21 @@ connection.onLogs(mintAddress,(data)=>{
     .then(transaction=>{
         console.log(transaction)
         if(!transaction) return;
+        if(!transaction.meta.postTokenBalances[1].owner) return;
         chats.forEach(chat => {
             const receiver=transaction.meta.postTokenBalances[1].owner;
             const amount=transaction.meta.postTokenBalances[1].uiTokenAmount.uiAmount-transaction.meta.preTokenBalances[1].uiTokenAmount.uiAmount
             const time=new Date(transaction.blockTime*1000);
-            bot.api.sendMessage(chat,"Buyer : "+receiver+"\nAmount : "+amount+"\nBought : "+time.toString()+"")
+            bot.api.sendMessage(chat,"Buyer : "+receiver+"\nAmount : "+amount+"\nBought : "+time.toString()+""
+            `Buyer : 
+            <a href="https://explorer.solana.com/address/${receiver}?cluster=devnet">${receiver}</a>
+            Amount : 
+            ${amount}
+            Bought: 
+            ${time.toString()} 
+            Signature : 
+            <a href="https://explorer.solana.com/tx/${data.signature}?cluster=devnet">${data.signature}</a>
+            `,{parse_mode:"HTML"})
             // bot.api.sendMessage(chat,messageContent.substring(4096,8191))
         });
     })
