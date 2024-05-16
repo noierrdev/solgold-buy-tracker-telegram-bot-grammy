@@ -45,7 +45,7 @@ connection.onLogs(mintAddress,(data)=>{
             <b>${amount}</b>
             <b>Bought:</b>
             <b>${time.toString()}</b>
-            <b>Signature :<b/>
+            <b>Signature :</b>
             <a href="https://explorer.solana.com/tx/${data.signature}?cluster=devnet">View on Explorer</a>
             `,{parse_mode:"HTML"})
             // bot.api.sendMessage(chat,messageContent.substring(4096,8191))
