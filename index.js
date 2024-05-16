@@ -32,16 +32,12 @@ connection.onLogs(mintAddress,(data)=>{
     connection.getParsedTransaction(data.signature)
     .then(transaction=>{
         console.log(transaction)
+        if(!transaction) return;
         chats.forEach(chat => {
-            // bot.api.sendMessage(chat,JSON.stringify(transaction))
-            if(!transaction) return;
-            var messageContent=JSON.stringify(transaction.meta);
             const receiver=transaction.meta.postTokenBalances[1].owner;
             const amount=transaction.meta.postTokenBalances[1].uiTokenAmount.uiAmount-transaction.meta.preTokenBalances[1].uiTokenAmount.uiAmount
             const time=new Date(transaction.blockTime);
-            
-            bot.api.sendMessage("Receiver : "+chat,receiver+"\nAmount : "+amount+"\nBought : "+time.toString()+""
-            ,{parse_mode:'HTML'})
+            bot.api.sendMessage(chat,"Receiver : "+chat,receiver+"\nAmount : "+amount+"\nBought : "+time.toString()+"")
             // bot.api.sendMessage(chat,messageContent.substring(4096,8191))
         });
     })
