@@ -37,7 +37,7 @@ connection.onLogs(mintAddress,(data)=>{
             const receiver=transaction.meta.postTokenBalances[1].owner;
             const amount=transaction.meta.postTokenBalances[1].uiTokenAmount.uiAmount-transaction.meta.preTokenBalances[1].uiTokenAmount.uiAmount
             const time=new Date(transaction.blockTime);
-            bot.api.sendMessage(chat,"Receiver : "+chat,receiver+"\nAmount : "+amount+"\nBought : "+time.toString()+"")
+            bot.api.sendMessage(chat,"Receiver : "+receiver+"\nAmount : "+amount+"\nBought : "+time.toString()+"")
             // bot.api.sendMessage(chat,messageContent.substring(4096,8191))
         });
     })
